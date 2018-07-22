@@ -4,6 +4,8 @@ class Bar():
     width = 20
     height = 70
 
+    y_velocity = 0
+    
     current_x = 0
     current_y = 0
 
