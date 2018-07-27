@@ -46,12 +46,20 @@ def gameLoop():
 
         if y+y_change > 0 and y+y_change < screen_height-70:
             y+=y_change
-    
+
+
         gameDisplay.fill((0,0,0))
         
         paddle_one.drawBar(gameDisplay, 20, y, (255,255,255))
+        if c.x_left_boundary <= paddle_one.x_right_boundary:
+            if (paddle_one.y_up_boundary <= c.y_top_boundary and paddle_one.y_bottom_boundary >= c.y_bottom_boundary):
+                c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255), True)
+                print(paddle_one.y_up_boundary, paddle_one.y_bottom_boundary, c.y_top_boundary, c.y_bottom_boundary)
+            else:
+                c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
 
-        c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
+        else:
+            c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
         pygame.display.update()
     
         clock.tick(60)
