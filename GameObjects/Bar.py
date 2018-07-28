@@ -24,12 +24,3 @@ class Bar():
         self.y_bottom_boundary = self.current_y + self.height
 
 
-        
-    def drawBar(self, screen, x, y, color):
-        self.current_x = x
-        self.current_y = y
-        self.update_boundaries()
-        pygame.draw.rect(screen, color, (x, y, self.width, self.height), 0)
-        pygame.draw.circle(screen, (255,0,0), (int(x), int(y)), 5)
-        pygame.draw.circle(screen, (255,0,0), (int(x), int(y)+self.height), 5)
-                           

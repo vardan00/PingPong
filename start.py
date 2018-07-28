@@ -1,7 +1,7 @@
 import pygame, random
 from GameObjects.Ball import Ball
 from GameObjects.Bar import Bar
-
+from Render import render
 
 class colors():
     black = (0,0,0)
@@ -49,17 +49,17 @@ def gameLoop():
 
 
         gameDisplay.fill((0,0,0))
-        
-        paddle_one.drawBar(gameDisplay, 20, y, (255,255,255))
+        render.drawBar(paddle_one, gameDisplay, 20, y, (255,255,255))
+
         if c.x_left_boundary <= paddle_one.x_right_boundary:
             if (paddle_one.y_up_boundary <= c.y_top_boundary and paddle_one.y_bottom_boundary >= c.y_bottom_boundary):
-                c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255), True)
+                render.drawCircle(c, gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255), True)
 
             else:
-                c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
+                render.drawCircle(c, gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
 
         else:
-            c.drawCircle(gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
+            render.drawCircle(c, gameDisplay, 400+c.x_velocity, 300+c.y_velocity, (255,255,255))
         pygame.display.update()
     
         clock.tick(60)
